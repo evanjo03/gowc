@@ -1,18 +1,10 @@
-BINARY_NAME=gowc
-INSTALL_DIR=/usr/local/bin
+ENTRYPOINT=./cmd/gowc
+BINARY_PATH=./bin/gowc
+
+run:
+	go run $(ENTRYPOINT)
 
 build:
-	go build -o $(BINARY_NAME)
+	go build -o $(BINARY_PATH) $(ENTRYPOINT)
 
-install:
-	@make build
-	@echo "Installing $(BINARY_NAME) to $(INSTALL_DIR)."
-	@sudo cp $(BINARY_NAME) $(INSTALL_DIR)
-	@chmod +x $(INSTALL_DIR)/$(BINARY_NAME)
-	@echo "Installation complete."
-
-run: 
-	make install
-	@echo "\n"
-	@gowc
 
